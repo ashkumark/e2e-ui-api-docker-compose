@@ -21,9 +21,18 @@ RUN apt-get update && \
 RUN mkdir /var/log/jenkins
 RUN chown -R  jenkins:jenkins /var/log/jenkins
 
-#USER jenkins
+# install Docker
+    RUN apt-get update
+    RUN apt-get install -y apt-transport-https ca-certificates software-properties-common
+    RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+    RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+    RUN apt-cache policy docker-ce
+    RUN apt-get install -y docker-ce
 
-#RUN usermod -a -G docker jenkins
+    RUN usermod -aG docker jenkins
+
+#USER jenkins
+    USER jenkins
   
 # Expose ports
 EXPOSE 5901
