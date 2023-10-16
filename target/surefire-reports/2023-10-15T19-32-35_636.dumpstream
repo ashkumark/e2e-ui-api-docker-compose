@@ -1,0 +1,4 @@
+# Created at 2023-10-15T19:32:36.235
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Ash\Courses\Automation Tester Courses - SDET\04 Ref\#Docker - Jenkins - AWS\# LABS Docker-and-Jenkins\8\e2e-ui-api-docker-compose\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+
