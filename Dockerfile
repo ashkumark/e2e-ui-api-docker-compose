@@ -29,10 +29,10 @@ RUN chown -R  jenkins:jenkins /var/log/jenkins
     RUN apt-cache policy docker-ce
     RUN apt-get install -y docker-ce
 
-    RUN usermod -aG docker jenkins
+    RUN usermod -aG docker ubuntu
 
 #USER jenkins
-    USER jenkins
+    #USER jenkins
   
 # Expose ports
 EXPOSE 5901
