@@ -22,6 +22,8 @@ RUN mkdir /var/log/jenkins
 RUN chown -R  jenkins:jenkins /var/log/jenkins
 
 USER jenkins
+
+RUN usermod -a -G docker jenkins
   
 # Expose ports
 EXPOSE 5901
