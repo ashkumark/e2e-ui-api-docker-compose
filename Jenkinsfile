@@ -1,7 +1,7 @@
 pipeline {
-	// agent any
+	 agent any
 	//agent { label 'jenkins-agent' }
-	agent { dockerfile true }
+	//agent { dockerfile true }
 
 	environment {
 		dockerImage = ''
