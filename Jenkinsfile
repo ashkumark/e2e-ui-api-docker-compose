@@ -3,7 +3,7 @@ pipeline {
 	//agent { label 'jenkins-agent' }
 	agent {
     		dockerfile {      
-      			filename 'Dockerfile'
+      			filename 'Dockerfile.build'
    	 	}
   	}
 
