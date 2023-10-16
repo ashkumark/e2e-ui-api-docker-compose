@@ -29,7 +29,7 @@ RUN chown -R  jenkins:jenkins /var/log/jenkins
     RUN apt-cache policy docker-ce
     RUN apt-get install -y docker-ce
 
-    RUN usermod -aG docker ubuntu
+    RUN usermod -aG docker jenkins
 
 #USER jenkins
     #USER jenkins
