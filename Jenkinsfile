@@ -50,7 +50,13 @@ pipeline {
                 sh 'docker-compose rm -sf'
 			}
 		}
-	}		
+	}
+
+	post {
+            always {
+                cleanWs()
+            }
+    }
 }
 
 
