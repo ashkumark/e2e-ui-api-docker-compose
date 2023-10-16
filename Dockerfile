@@ -16,14 +16,14 @@ USER root
 
 # Install necessary tools
 RUN apt-get update && \
-    apt-get install -y vim wget curl jq unzip bash --no-install-recommends
+    apt-get install -y vim wget curl jq unzip bash sudo --no-install-recommends
 
 RUN mkdir /var/log/jenkins
 RUN chown -R  jenkins:jenkins /var/log/jenkins
 
-USER jenkins
+#USER jenkins
 
-RUN usermod -a -G docker jenkins
+#RUN usermod -a -G docker jenkins
   
 # Expose ports
 EXPOSE 5901
