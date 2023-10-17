@@ -26,9 +26,21 @@ ENV DOCKER_API_VERSION 1.27
 RUN curl -fsSL "https://download.docker.com/linux/static/${DOCKER_CHANNEL}/x86_64/docker-${DOCKER_VERSION}.tgz" \
   | tar -xzC /usr/local/bin --strip=1 docker/docker
 
+#Docker-compose
+#RUN curl -fsSL -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m`" \
+#    -o /usr/local/bin/docker-compose
+#RUN chmod +x /usr/local/bin/docker-compose
+
+ENV DOCKER_COMPOSE_VERSION v2.20.3
+#ENV DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+#RUN mkdir -p $DOCKER_CONFIG/cli-plugins
+RUN curl -fsSL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-linux-x86_64" \
+    -o /usr/local/bin/docker-compose
+
+RUN chmod +x /usr/local/bin/docker-compose
+
 RUN groupadd docker
 RUN usermod -aG docker jenkins
-#RUN reboot
 
 USER jenkins
 
