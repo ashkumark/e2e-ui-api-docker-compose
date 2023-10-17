@@ -1,44 +1,36 @@
 
+#FROM maven:3.8.2-openjdk-8
 
-#FROM maven:3.8.3-openjdk-8
 FROM jenkins/jenkins:lts
 LABEL maintainer="ash"
 
-WORKDIR /docker-jenkins-test
-
-COPY src /docker-jenkins-test/src
-COPY pom.xml /docker-jenkins-test
+WORKDIR /home/docker-jenkins-test
+COPY src /home/docker-jenkins-test/src
+COPY pom.xml /home/docker-jenkins-test
 
 ENV JAVA_OPTS="-Xmx8192m"
 ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log"
 
 USER root
 
-# Install necessary tools
-RUN apt-get update && \
-    apt-get install -y vim wget curl jq unzip bash sudo maven --no-install-recommends
+RUN apt-get update
+RUN apt-get install -y wget curl unzip sudo maven --no-install-recommends
 
 RUN mkdir /var/log/jenkins
 RUN chown -R  jenkins:jenkins /var/log/jenkins
 
-# install Docker
-    RUN apt-get update
-    RUN apt-get install -y apt-transport-https ca-certificates software-properties-common
-    RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-    RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-    RUN apt-cache policy docker-ce
-    RUN apt-get install -y docker-ce
+#Docker
+ENV DOCKER_CHANNEL stable
+ENV DOCKER_VERSION 17.03.1-ce
+ENV DOCKER_API_VERSION 1.27
+RUN curl -fsSL "https://download.docker.com/linux/static/${DOCKER_CHANNEL}/x86_64/docker-${DOCKER_VERSION}.tgz" \
+  | tar -xzC /usr/local/bin --strip=1 docker/docker
 
-    RUN usermod -aG docker jenkins
+RUN groupadd docker
+RUN usermod -aG docker jenkins
+#RUN reboot
 
-#USER jenkins
-    #USER jenkins
-  
+USER jenkins
+
 # Expose ports
 EXPOSE 5901
-    
-# Create a runner script for the entrypoint
-COPY runner.sh /docker-jenkins-test
-RUN chmod +x ./runner.sh
-
-ENTRYPOINT ["./runner.sh"]
