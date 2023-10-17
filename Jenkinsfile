@@ -28,16 +28,22 @@ pipeline {
 				sh 'docker-compose up -d'
 			}
 		}
-		
+
+        stage('API Automation') {
+            steps {
+                sh 'docker-compose run -e TYPE="@API" api-test-service'
+            }
+        }
+
 		stage('UI Automation - Chrome') {
 			steps {		
-				sh 'docker-compose run -e BROWSER="chrome" selenium-test'
+				sh 'docker-compose run -e TYPE="@UI" -e BROWSER="chrome" ui-test-service'
 			}
 		}
 		
 		stage('UI Automation - Firefox') {
 			steps {
-				sh 'docker-compose run -e BROWSER="firefox" selenium-test'
+				sh 'docker-compose run -e TYPE="@UI" -e BROWSER="firefox" ui-test-service'
 			}
 		}
 		
