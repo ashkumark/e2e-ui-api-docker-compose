@@ -6,13 +6,19 @@ pipeline {
 	environment {
 		dockerImage = ''
 	}
+
+    options {
+        timeout(time: 10, unit: 'MINUTES')
+    }
 	
 	stages {
-		stage('Checkout code') {
-			steps {
-				checkout scm
-			}
-		}
+// 		stage('Checkout code') {
+// 			steps {
+// 				checkout scm
+// 			}
+// 		}
+
+
 		
 		stage('Build Image') {
 	       steps {

@@ -17,7 +17,7 @@ services:
       - "4444:4444"
    
   chrome-service:  
-    image: selenium/node-chrome-debug:3.141.59  
+    image: selenium/node-chrome:3.141.59
     networks:
       - grid
     volumes:
@@ -32,7 +32,7 @@ services:
      - "5900"
 
   firefox-service: 
-    image: selenium/node-firefox-debug:3.141.59   
+    image: selenium/node-firefox:3.141.59
     networks:
       - grid
     volumes:
