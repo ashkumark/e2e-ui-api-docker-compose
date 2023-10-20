@@ -30,9 +30,10 @@ pipeline {
 		
 		stage('Build Image') {
 	       steps {
-	           script {
-	               dockerImage = docker.build("docker-e2e-automation")
-	           }
+	           //script {
+	               //dockerImage = docker.build("docker-e2e-automation")
+	              sh 'docker-compose build docker-e2e-automation'
+	           //}
 	       }
 	    }
 	    
@@ -75,8 +76,8 @@ pipeline {
 
 	post {
         always {
-            sh 'docker compose down --remove-orphans -v'
-            sh 'docker compose ps'
+            sh 'docker-compose down --remove-orphans -v'
+            sh 'docker-compose ps'
             cleanWs()
         }
     }
