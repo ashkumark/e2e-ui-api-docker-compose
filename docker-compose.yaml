@@ -47,7 +47,7 @@ services:
      - "5901"
 
   ui-test-service:
-    image: docker-e2e-automation:latest
+    image: docker-e2e-automation
     networks:
       - grid
     volumes:
@@ -61,7 +61,7 @@ services:
       - TYPE="@UI"
 
   api-test-service:
-    image: docker-e2e-automation:latest
+    image: docker-e2e-automation
     networks:
       - rest
     volumes:
