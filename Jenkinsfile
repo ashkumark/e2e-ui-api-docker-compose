@@ -12,13 +12,21 @@ pipeline {
     }
 	
 	stages {
-// 		stage('Checkout code') {
-// 			steps {
-// 				checkout scm
-// 			}
-// 		}
+        stage("Verify tooling") {
+              steps {
+                sh '''
+                  docker version
+                  docker info
+                  docker compose version
+                '''
+              }
+        }
 
-
+        stage('Prune Docker data') {
+              steps {
+                sh 'docker system prune -a --volumes -f'
+              }
+        }
 		
 		stage('Build Image') {
 	       steps {
@@ -31,7 +39,8 @@ pipeline {
 		// Start docker-compose selenium-hub
 		stage('Start docker-compose') {
 			steps {
-				sh 'docker-compose up -d'
+				sh 'docker-compose up -d --no-color --wait'
+				sh 'docker compose ps'
 			}
 		}
 
@@ -65,9 +74,11 @@ pipeline {
 	}
 
 	post {
-            always {
-                cleanWs()
-            }
+        always {
+            sh 'docker compose down --remove-orphans -v'
+            sh 'docker compose ps'
+            cleanWs()
+        }
     }
 }
 
