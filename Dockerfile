@@ -54,7 +54,6 @@ RUN curl -fsSL "https://github.com/docker/compose/releases/download/${DOCKER_COM
 RUN chmod +x /usr/local/bin/docker-compose
 
 #RUN useradd jenkins
-
 RUN groupadd docker
 RUN usermod -aG docker jenkins
 
