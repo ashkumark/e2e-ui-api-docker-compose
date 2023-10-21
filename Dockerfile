@@ -58,10 +58,10 @@ RUN chmod +x /usr/local/bin/docker-compose
 RUN groupadd docker
 RUN usermod -aG docker jenkins
 
-#USER jenkins
-
 # Create a runner script for the entrypoint
 COPY runner.sh /docker-jenkins-test
 RUN chmod +x ./runner.sh
+
+USER jenkins
 
 ENTRYPOINT ["./runner.sh"]
