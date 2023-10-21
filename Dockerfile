@@ -1,5 +1,5 @@
 #FROM maven:3.8.3-openjdk-8
-FROM jenkinsci/blueocean
+FROM jenkins/jenkins:lts
 
 WORKDIR /docker-jenkins-test
 
