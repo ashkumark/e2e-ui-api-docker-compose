@@ -8,6 +8,18 @@ volumes:
   reports-volume:
  
 services:
+  api-test-service:
+    image: docker-e2e-automation
+    #build: 
+    #  context: .
+    #  dockerfile: Dockerfile
+    networks:
+      - rest
+    volumes:
+      - reports-volume:/docker-jenkins-test/target
+    environment:
+      - TYPE="@API"
+
   selenium-hub-service:    
     image: selenium/hub:3.141.59
     container_name: selenium-hub
@@ -60,13 +72,5 @@ services:
       - BROWSER=chrome
       - TYPE="@UI"
 
-  api-test-service:
-    image: docker-e2e-automation
-    networks:
-      - rest
-    volumes:
-      - reports-volume:/docker-jenkins-test/target
-    environment:
-      - TYPE="@API"
 
     

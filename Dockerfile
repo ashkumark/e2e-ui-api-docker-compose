@@ -52,5 +52,8 @@ RUN usermod -aG docker jenkins
 
 USER jenkins
 
-# Expose ports
-EXPOSE 5901
+# Create a runner script for the entrypoint
+COPY runner.sh  /home/docker-jenkins-test
+RUN chmod +x ./runner.sh
+
+ENTRYPOINT ["./runner.sh"]

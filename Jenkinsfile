@@ -40,26 +40,27 @@ pipeline {
 		// Start docker-compose selenium-hub
 		stage('Start docker-compose') {
 			steps {
-				sh 'docker-compose up -d --no-color --wait'
+				sh 'docker-compose -f docker-compose.yaml up -d --no-color --wait'
 				sh 'docker-compose ps'
 			}
 		}
 
         stage('API Automation') {
             steps {
-                sh 'docker-compose run -e TYPE="@API" api-test-service'
+                //sh 'docker-compose run -e TYPE="@API" api-test-service'
+                sh 'docker-compose -f docker-compose.yaml run -e TYPE="@API" api-test-service'
             }
         }
 
 		stage('UI Automation - Chrome') {
 			steps {		
-				sh 'docker-compose run -e TYPE="@UI" -e BROWSER="chrome" ui-test-service'
+				sh 'docker-compose -f docker-compose.yaml run -e TYPE="@UI" -e BROWSER="chrome" ui-test-service'
 			}
 		}
 		
 		stage('UI Automation - Firefox') {
 			steps {
-				sh 'docker-compose run -e TYPE="@UI" -e BROWSER="firefox" ui-test-service'
+				sh 'docker-compose -f docker-compose.yaml run -e TYPE="@UI" -e BROWSER="firefox" ui-test-service'
 			}
 		}
 		
