@@ -1,4 +1,5 @@
-FROM maven:3.8.3-openjdk-8
+#FROM maven:3.8.3-openjdk-8
+FROM jenkinsci/blueocean
 
 WORKDIR /docker-jenkins-test
 
@@ -52,7 +53,7 @@ RUN curl -fsSL "https://github.com/docker/compose/releases/download/${DOCKER_COM
 
 RUN chmod +x /usr/local/bin/docker-compose
 
-RUN useradd jenkins
+#RUN useradd jenkins
 
 RUN groupadd docker
 RUN usermod -aG docker jenkins
