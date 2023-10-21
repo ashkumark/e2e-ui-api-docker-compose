@@ -10,8 +10,6 @@ USER root
 # Install necessary tools
 RUN apt-get update && \
     apt-get install -y vim wget curl jq unzip bash tar --no-install-recommends
-    
-
 
 
 #WORKDIR /home/docker-jenkins-test
