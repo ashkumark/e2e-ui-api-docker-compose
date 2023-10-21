@@ -1,18 +1,30 @@
+FROM maven:3.8.3-openjdk-8
 
-FROM jenkins/jenkins:jdk11
-LABEL maintainer="ash"
+WORKDIR /docker-jenkins-test
 
-WORKDIR /home/docker-jenkins-test
-COPY src /home/docker-jenkins-test/src
-COPY pom.xml /home/docker-jenkins-test
-
-ENV JAVA_OPTS="-Xmx8192m"
-ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log"
+COPY src /docker-jenkins-test/src
+COPY pom.xml /docker-jenkins-test
 
 USER root
 
-RUN apt-get update
-RUN apt-get install -y wget curl unzip sudo tar --no-install-recommends
+# Install necessary tools
+RUN apt-get update && \
+    apt-get install -y vim wget curl jq unzip bash tar --no-install-recommends
+    
+
+
+
+#WORKDIR /home/docker-jenkins-test
+#COPY src /home/docker-jenkins-test/src
+#COPY pom.xml /home/docker-jenkins-test
+
+#ENV JAVA_OPTS="-Xmx8192m"
+#ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log"
+
+#USER root
+
+#RUN apt-get update
+#RUN apt-get install -y wget curl unzip sudo tar --no-install-recommends
 # ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 
 # #Maven
@@ -42,25 +54,15 @@ RUN curl -fsSL "https://github.com/docker/compose/releases/download/${DOCKER_COM
 
 RUN chmod +x /usr/local/bin/docker-compose
 
+RUN useradd jenkins
+
 RUN groupadd docker
 RUN usermod -aG docker jenkins
 
-USER jenkins
-
-FROM maven:3.8.3-openjdk-8
-
-WORKDIR /docker-jenkins-test
-
-COPY src /docker-jenkins-test/src
-COPY pom.xml /docker-jenkins-test
-
-USER root
-
-# Install necessary tools
-RUN apt-get update && \
-    apt-get install -y vim wget curl jq unzip bash --no-install-recommends
+#USER jenkins
 
 # Create a runner script for the entrypoint
-COPY runner.sh  /home/docker-jenkins-test
+COPY runner.sh /docker-jenkins-test
 RUN chmod +x ./runner.sh
+
 ENTRYPOINT ["./runner.sh"]
