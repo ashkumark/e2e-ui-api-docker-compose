@@ -38,7 +38,6 @@ RUN curl -fsSL "https://download.docker.com/linux/static/${DOCKER_CHANNEL}/x86_6
 
 #Docker compose - https://docs.docker.com/compose/release-notes/
 ENV DOCKER_COMPOSE_VERSION v2.21.0
-RUN git config --global --unset-all remote.origin.proxy
 RUN curl -fsSL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-linux-x86_64" \
     -o /usr/local/bin/docker-compose
 
