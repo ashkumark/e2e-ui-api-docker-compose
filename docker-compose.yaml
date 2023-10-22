@@ -9,10 +9,10 @@ volumes:
  
 services:
   api-test-service:
-    image: docker-e2e-automation
-    #build: 
-    #  context: .
-    #  dockerfile: Dockerfile
+    #image: docker-e2e-automation
+    build: 
+      context: .
+      dockerfile: Dockerfile
     networks:
       - rest
     volumes:
@@ -60,7 +60,10 @@ services:
      - "5901"
 
   ui-test-service:
-    image: docker-e2e-automation
+    #image: docker-e2e-automation
+    build: 
+      context: .
+      dockerfile: Dockerfile
     networks:
       - grid
     volumes:
