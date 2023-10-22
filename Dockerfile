@@ -37,8 +37,11 @@ RUN curl -fsSL "https://download.docker.com/linux/static/${DOCKER_CHANNEL}/x86_6
   | tar -xzC /usr/local/bin --strip=1 docker/docker
 
 #Docker compose - https://docs.docker.com/compose/release-notes/
-ENV DOCKER_COMPOSE_VERSION v2.21.0
-RUN curl -fsSL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-linux-x86_64" \
+ENV DOCKER_COMPOSE_VERSION v2.22.0
+#RUN curl -fsSL "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-linux-x86_64" \
+#    -o /usr/local/bin/docker-compose
+
+RUN curl -fsSL "https://sourceforge.net/projects/docker-compose.mirror/files/${DOCKER_COMPOSE_VERSION}/docker-compose-linux-x86_64/download"  \
     -o /usr/local/bin/docker-compose
 
 RUN chmod +x /usr/local/bin/docker-compose
