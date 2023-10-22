@@ -11,7 +11,7 @@ ENV JENKINS_OPTS="--logfile=/var/log/jenkins/jenkins.log"
 
 USER root
 
-# Create a runner script for the entrypoint
+# Create a runner script for the entrypoint (used in docker-compose)
 COPY runner.sh  /home/docker-jenkins-test
 RUN chmod +x ./runner.sh
 
