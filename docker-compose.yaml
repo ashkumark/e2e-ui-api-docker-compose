@@ -76,5 +76,3 @@ services:
       - BROWSER=chrome
       - TYPE="@UI"
     entrypoint: ./runner.sh
-
-    
