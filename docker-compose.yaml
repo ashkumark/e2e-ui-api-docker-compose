@@ -9,7 +9,6 @@ volumes:
  
 services:
   api-test-service:
-    #image: docker-e2e-automation
     build: 
       context: .
       dockerfile: Dockerfile
@@ -60,7 +59,6 @@ services:
      - "5901"
 
   ui-test-service:
-    #image: docker-e2e-automation
     build: 
       context: .
       dockerfile: Dockerfile
