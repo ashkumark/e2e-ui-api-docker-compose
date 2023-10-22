@@ -17,7 +17,7 @@ RUN chmod +x ./runner.sh
 
 #Basic Utils
 RUN apt-get update
-RUN apt-get install -y wget curl unzip sudo tar --no-install-recommends
+RUN apt-get install -y wget curl jq unzip sudo tar --no-install-recommends
 
 #Maven
 ENV MAVEN_VERSION 3.9.5

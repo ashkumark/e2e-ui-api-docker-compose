@@ -27,14 +27,14 @@ pipeline {
               }
         }
 		
-		stage('Build Image') {
-	       steps {
-	           script {
-	               dockerImage = docker.build("docker-e2e-automation")
-	              //sh 'docker-compose build docker-e2e-automation'
-	           }
-	       }
-	    }
+//		stage('Build Image') {
+//	       steps {
+//	           script {
+//	               dockerImage = docker.build("docker-e2e-automation")
+//	              //sh 'docker-compose build docker-e2e-automation'
+//	           }
+//	       }
+//	    }
 	    
 		// Start docker-compose selenium-hub
 		stage('Start docker-compose') {
@@ -46,7 +46,6 @@ pipeline {
 
         stage('API Automation') {
             steps {
-                //sh 'docker-compose run -e TYPE="@API" api-test-service'
                 sh 'docker-compose -f docker-compose.yaml run -e TYPE="@API" api-test-service'
             }
         }
