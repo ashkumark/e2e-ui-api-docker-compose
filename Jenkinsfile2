@@ -23,6 +23,8 @@ pipeline {
 
         stage('Docker System Prune') {
               steps {
+               // Clean before build
+                cleanWs()
                 sh 'docker system prune -a --volumes -f'
               }
         }
