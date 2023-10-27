@@ -4,7 +4,7 @@ pipeline {
 	//agent { dockerfile true }
 	environment {
 		dockerImage = ''
-		baseFolder = "$WORKSPACE"
+		basedir = "$WORKSPACE"
 	}
 
     options {
@@ -18,9 +18,7 @@ pipeline {
                   docker version
                   docker info
                   docker-compose version
-                  echo "WORKSPACE is - $WORKSPACE"
-                  echo "baseFolder is - ${baseFolder}"
-                  echo "baseFolder is - $baseFolder"
+                  echo "basedir is - ${basedir}"
                 '''
               }
         }
