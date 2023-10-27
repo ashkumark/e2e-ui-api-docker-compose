@@ -24,6 +24,7 @@ pipeline {
         stage('Docker System Prune') {
               steps {
                 sh 'docker system prune -a --volumes -f'
+                cleanWs()
               }
         }
 	    
@@ -70,7 +71,6 @@ pipeline {
         always {
             sh 'docker-compose down --remove-orphans -v'
             sh 'docker-compose ps'
-            //cleanWs()
         }
     }
 }
