@@ -4,7 +4,7 @@ pipeline {
 	//agent { dockerfile true }
 	environment {
 		dockerImage = ''
-		baseFolder=$WORKSPACE
+		baseFolder='$WORKSPACE'
 	}
 
     options {
