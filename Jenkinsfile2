@@ -21,7 +21,7 @@ pipeline {
                   echo "WORKSPACE is - $WORKSPACE"
                   baseFolder = $WORKSPACE
                   //echo "baseFolder is - $baseFolder"
-                   echo "baseFolder is - ${baseFolder}"
+                  // echo "baseFolder is - ${baseFolder}"
                 '''
               }
         }
