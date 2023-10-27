@@ -12,7 +12,6 @@
 		<selenium.version>3.141.59</selenium.version>
 		<java-hamcrest.version>2.0.0.0</java-hamcrest.version>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-		<basedir>/var/jenkins_home/workspace/Report-Pipeline</basedir>
 	</properties>
 
 	<dependencies>
@@ -119,7 +118,7 @@
 	<build>
 		<defaultGoal>install</defaultGoal>
 		<sourceDirectory>src</sourceDirectory>
-		<directory>${basedir}/target</directory>
+		<directory>${jenkins.workspace}/target</directory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -151,6 +150,10 @@
 					<includes>
 						<include>TestRunner.java</include>
 					</includes>
+					<environmentVariables>
+						<!--suppress UnresolvedMavenProperty -->
+						<jenkins.workspace>${WORKSPACE}</jenkins.workspace>
+					</environmentVariables>
 				</configuration>
 			</plugin>
 		</plugins>
