@@ -25,4 +25,4 @@ do
 done
 
 # Run tests
-mvn test -Dcucumber.filter.tags=$TYPE -DHUB_HOST=$HUB_HOST -DBROWSER=$BROWSER
+mvn test -f pom.xml -Dcucumber.filter.tags=$TYPE -DHUB_HOST=$HUB_HOST -DBROWSER=$BROWSER
