@@ -4,7 +4,7 @@ if [ -z "$HUB_HOST" ]
 then
       echo "\$HUB_HOST is empty"
       echo "Run automated API tests..."
-      mvn test -Dcucumber.filter.tags=$TYPE
+      mvn -f pom.xml test -Dtest=TestRunner -Dcucumber.filter.tags=$TYPE
       exit 0
 else
       echo "\$HUB_HOST is NOT empty - $HUB_HOST"
