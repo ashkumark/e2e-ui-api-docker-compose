@@ -11,6 +11,7 @@
 		<rest-assured.version>4.3.0</rest-assured.version>
 		<selenium.version>3.141.59</selenium.version>
 		<java-hamcrest.version>2.0.0.0</java-hamcrest.version>
+		<basedir>/var/jenkins_home/workspace/Report-Pipeline</basedir>
 	</properties>
 
 	<dependencies>
