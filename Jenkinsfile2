@@ -4,7 +4,7 @@ pipeline {
 	//agent { dockerfile true }
 	environment {
 		dockerImage = ''
-		//baseFolder='$WORKSPACE'
+		baseFolder='$WORKSPACE'
 		basedir='/var/jenkins_home/workspace/Report-Pipeline'
 	}
 
@@ -19,6 +19,8 @@ pipeline {
                   docker version
                   docker info
                   docker-compose version
+                  echo "WORKSPACE is - $WORKSPACE"
+                  echo "baseFolder is - baseFolder"
                 '''
               }
         }

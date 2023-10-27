@@ -5,6 +5,7 @@ then
       echo "\$HUB_HOST is empty"
       echo "Run automated API tests..."
       mvn -f pom.xml test -Dtest=TestRunner -Dcucumber.filter.tags=$TYPE
+      echo "API tests run completed..."
       exit 0
 else
       echo "\$HUB_HOST is NOT empty - $HUB_HOST"
