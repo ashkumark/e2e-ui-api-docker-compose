@@ -4,7 +4,8 @@ pipeline {
 	//agent { dockerfile true }
 	environment {
 		dockerImage = ''
-		baseFolder='$WORKSPACE'
+		//baseFolder='$WORKSPACE'
+		baseFolder='/var/jenkins_home/workspace'
 	}
 
     options {
