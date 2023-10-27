@@ -5,7 +5,7 @@ pipeline {
 	environment {
 		dockerImage = ''
 		//baseFolder='$WORKSPACE'
-		baseFolder='/var/jenkins_home/workspace/Report-Pipeline'
+		basedir='/var/jenkins_home/workspace/Report-Pipeline'
 	}
 
     options {
