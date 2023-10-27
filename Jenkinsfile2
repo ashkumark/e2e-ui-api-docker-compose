@@ -44,8 +44,9 @@ pipeline {
                   publishHTML([
                               allowMissing: false,
                               alwaysLinkToLastBuild: false,
+                              includes: '**/*',
                               keepAll: false,
-                              reportDir: 'Report-Pipeline/Reports',
+                              reportDir: 'Reports/',
                               reportFiles: 'TestReport.html',
                               reportName: 'ExtentReport',
                               reportTitles: '',
