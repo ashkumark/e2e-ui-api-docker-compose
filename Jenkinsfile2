@@ -45,7 +45,7 @@ pipeline {
                               allowMissing: false,
                               alwaysLinkToLastBuild: false,
                               keepAll: false,
-                              reportDir: 'Report-Pipeline/target/Reports',
+                              reportDir: 'Report-Pipeline/Reports',
                               reportFiles: 'TestReport.html',
                               reportName: 'ExtentReport',
                               reportTitles: '',
