@@ -7,6 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
+		<baseFolder>${basedir}</baseFolder>
 		<cucumber.version>6.9.1</cucumber.version>
 		<rest-assured.version>4.3.0</rest-assured.version>
 		<selenium.version>3.141.59</selenium.version>
@@ -109,6 +110,8 @@
 	</dependencies>
 
 	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<directory>${baseFolder}/target</directory>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
