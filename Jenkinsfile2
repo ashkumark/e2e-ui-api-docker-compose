@@ -46,8 +46,8 @@ pipeline {
                               alwaysLinkToLastBuild: false,
                               includes: '**/*',
                               keepAll: false,
-                              reportDir: 'Reports/',
-                              reportFiles: 'TestReport.html',
+                              reportDir: 'target/Reports/',
+                              reportFiles: 'automated-test-report.html',
                               reportName: 'ExtentReport',
                               reportTitles: '',
                               useWrapperFileDirectly: true])
