@@ -1,8 +1,0 @@
-com\m2at\glue\ui\GooglePagetitleSteps.class
-com\m2at\utils\LoadProperties.class
-com\m2at\constants\Environment.class
-com\m2at\constants\Waits.class
-com\m2at\utils\WebDriverFactory.class
-com\m2at\testrunner\TestRunner.class
-com\m2at\glue\ui\GooglePagetitleSteps$1.class
-com\m2at\glue\api\ApiDemoFeatureGlue.class
