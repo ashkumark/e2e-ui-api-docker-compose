@@ -19,9 +19,9 @@ pipeline {
                   docker info
                   docker-compose version
                   echo "WORKSPACE is - $WORKSPACE"
-                  baseFolder = $WORKSPACE
-                  //echo "baseFolder is - $baseFolder"
-                  // echo "baseFolder is - ${baseFolder}"
+                  baseFolder = '$WORKSPACE'
+                  echo "baseFolder is - $baseFolder"
+                  echo "baseFolder is - ${baseFolder}"
                 '''
               }
         }
