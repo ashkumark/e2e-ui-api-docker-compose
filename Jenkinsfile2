@@ -11,7 +11,7 @@ pipeline {
     }
 	
 	stages {
-        stage("Verify tooling") {
+        stage("Check Docker version") {
               steps {
                 sh '''
                   docker version
@@ -21,20 +21,11 @@ pipeline {
               }
         }
 
-        stage('Prune Docker data') {
+        stage('Docker System Prune') {
               steps {
                 sh 'docker system prune -a --volumes -f'
               }
         }
-		
-//		stage('Build Image') {
-//	       steps {
-//	           script {
-//	               dockerImage = docker.build("docker-e2e-automation")
-//	              //sh 'docker-compose build docker-e2e-automation'
-//	           }
-//	       }
-//	    }
 	    
 		// Start docker-compose selenium-hub
 		stage('Start docker-compose') {
@@ -48,19 +39,20 @@ pipeline {
             steps {
                 sh 'docker-compose -f docker-compose.yaml run -e TYPE="@API" api-test-service'
             }
+            post {
+                success {
+                  publishHTML([
+                              allowMissing: false,
+                              alwaysLinkToLastBuild: false,
+                              keepAll: false,
+                              reportDir: 'Reports',
+                              reportFiles: 'TestReport.html',
+                              reportName: 'ExtentReport',
+                              reportTitles: '',
+                              useWrapperFileDirectly: true])
+                }
+            }
         }
-
-		stage('UI Automation - Chrome') {
-			steps {		
-				sh 'docker-compose -f docker-compose.yaml run -e TYPE="@UI" -e BROWSER="chrome" ui-test-service'
-			}
-		}
-		
-		stage('UI Automation - Firefox') {
-			steps {
-				sh 'docker-compose -f docker-compose.yaml run -e TYPE="@UI" -e BROWSER="firefox" ui-test-service'
-			}
-		}
 		
 		stage('Docker Teardown') {
 			steps {
