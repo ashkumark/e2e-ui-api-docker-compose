@@ -43,17 +43,8 @@ pipeline {
                 sh 'docker-compose -f docker-compose-api.yaml run -e TYPE="@API" api-test-service'
             }
             post {
-                success {
-                  publishHTML([
-                              allowMissing: false,
-                              alwaysLinkToLastBuild: false,
-                              includes: '**/*',
-                              keepAll: false,
-                              reportDir: 'target/Reports/',
-                              reportFiles: 'automated-test-report.html',
-                              reportName: 'ExtentReport',
-                              reportTitles: '',
-                              useWrapperFileDirectly: true])
+                always {
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
