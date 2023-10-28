@@ -19,6 +19,8 @@ pipeline {
                   docker info
                   docker-compose version
                   echo "basedir is - ${basedir}"
+                  mkdir -p ${basedir}/test
+                  ls -l
                 '''
               }
         }
