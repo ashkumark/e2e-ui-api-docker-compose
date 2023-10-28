@@ -145,9 +145,9 @@
 	</dependencies>
 
 	<build>
-		<defaultGoal>install</defaultGoal>
-		<sourceDirectory>src</sourceDirectory>
-		<directory>${baseFolder}/target</directory>
+<!--		<defaultGoal>install</defaultGoal>-->
+<!--		<sourceDirectory>src</sourceDirectory>-->
+<!--		<directory>${baseFolder}/target</directory>-->
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
