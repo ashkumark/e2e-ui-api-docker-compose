@@ -21,7 +21,7 @@ pipeline {
                   echo "basedir is - ${basedir}"
                   mkdir -p ${basedir}/test
                   ls -l
-                  chmod -R a+w ${basedir}
+                  chown -R jenkins:jenkins ${basedir}
                 '''
               }
         }
