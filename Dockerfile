@@ -48,4 +48,4 @@ RUN chmod +x /usr/local/bin/docker-compose
 
 RUN groupadd docker
 RUN usermod -aG docker jenkins
-USER jenkins
+#USER jenkins
