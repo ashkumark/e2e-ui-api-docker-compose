@@ -13,6 +13,10 @@
 		<java-hamcrest.version>2.0.0.0</java-hamcrest.version>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
 		<baseFolder>${basedir}</baseFolder>
+		<project.root.dir>${basedir}</project.root.dir>
+		<target.root.dir>${basedir}/target</target.root.dir>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 	<dependencies>
@@ -150,13 +154,13 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.11.0</version>
 				<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
-<!--					<release>11</release>-->
+<!--						<source>1.8</source>-->
+<!--						<target>1.8</target>-->
+					<release>11</release>
 				</configuration>
 			</plugin>
 
-			<plugin>
+<!--			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>3.3.1</version>
@@ -165,6 +169,36 @@
 					<resources>${project.testResources}</resources>
 					<encoding>${project.build.sourceEncoding} </encoding>
 				</configuration>
+			</plugin>-->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.3.1</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<!--source -->
+									<directory>${project.root.dir}</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>*/**</include>
+									</includes>
+								</resource>
+							</resources>
+							<!--target -->
+							<outputDirectory>${target.root.dir}</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
