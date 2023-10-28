@@ -21,7 +21,7 @@ pipeline {
                   echo "basedir is - ${basedir}"
                   mkdir -p ${basedir}/test
                   ls -l
-                  chown -R jenkins:jenkins ${basedir}/../
+                  chown -R jenkins:jenkins /var/jenkins_home/workspace
                 '''
               }
         }
