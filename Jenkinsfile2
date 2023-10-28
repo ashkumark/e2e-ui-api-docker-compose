@@ -28,18 +28,17 @@ pipeline {
                 sh 'docker system prune -a --volumes -f'
               }
         }
-	    
-		// Start docker-compose selenium-hub
+
 		stage('Start docker-compose') {
 			steps {
-				sh 'docker-compose -f docker-compose.yaml up -d --no-color --wait'
+				sh 'docker-compose -f docker-compose-api.yaml up -d --no-color --wait'
 				sh 'docker-compose ps'
 			}
 		}
 
         stage('API Automation') {
             steps {
-                sh 'docker-compose -f docker-compose.yaml run -e TYPE="@API" api-test-service'
+                sh 'docker-compose -f docker-compose-api.yaml run -e TYPE="@API" api-test-service'
             }
             post {
                 success {

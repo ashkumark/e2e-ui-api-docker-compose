@@ -1,4 +1,4 @@
-package com.m2at.utils;
+package test.java.com.m2at.utils;
 
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.Collections;
 import java.util.logging.Level;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -15,7 +16,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.m2at.constants.Environment;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 public class WebDriverFactory {
 
