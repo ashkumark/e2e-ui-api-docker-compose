@@ -1,5 +1,5 @@
 
-FROM jenkins/jenkins:jdk11
+FROM jenkins/jenkins:jdk17
 LABEL maintainer="ash"
 
 WORKDIR /home/docker-jenkins-test

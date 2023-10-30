@@ -1,4 +1,4 @@
-package test.java.com.m2at.testrunner;
+package com.m2at.testrunner;
 
 import org.junit.runner.RunWith;
 

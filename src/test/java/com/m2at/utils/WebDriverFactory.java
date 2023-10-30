@@ -1,4 +1,4 @@
-package test.java.com.m2at.utils;
+package com.m2at.utils;
 
 import java.io.InputStream;
 import java.net.MalformedURLException;

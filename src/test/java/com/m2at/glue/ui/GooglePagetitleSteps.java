@@ -1,4 +1,4 @@
-package test.java.com.m2at.glue.ui;
+package com.m2at.glue.ui;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.m2at.constants.Environment;
 import com.m2at.utils.LoadProperties;
-import test.java.com.m2at.utils.WebDriverFactory;
+import com.m2at.utils.WebDriverFactory;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;

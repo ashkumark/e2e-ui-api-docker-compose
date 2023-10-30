@@ -1,4 +1,4 @@
-package test.java.com.m2at.glue.api;
+package com.m2at.glue.api;
 
 
 import static org.hamcrest.Matchers.equalTo;
