@@ -39,7 +39,7 @@ pipeline {
 		// Start docker-compose selenium-hub
 		stage('Start docker-compose') {
 			steps {
-				sh 'docker-compose -f docker-compose.yaml up -d --no-color --wait'
+				sh 'docker-compose -f docker-compose.yaml up -d --no-color'
 				sh 'docker-compose ps'
 			}
 		}
